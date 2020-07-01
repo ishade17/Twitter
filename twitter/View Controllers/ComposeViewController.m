@@ -13,8 +13,7 @@
 @interface ComposeViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *tweetComposerTextView;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *tweetButtonItem;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButtonItem;
+
 
 @end
 

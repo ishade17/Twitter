@@ -64,6 +64,19 @@
     TweetCell *cell  = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     
     Tweet *tweetInfo = self.tweetsArray[indexPath.row];
+    cell.tweet = tweetInfo;
+    
+    if (cell.tweet.retweeted == YES) {
+        [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+    } else {
+        [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
+    }
+    
+    if (cell.tweet.favorited == YES) {
+        [cell.likeButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
+    } else {
+        [cell.likeButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
+    }
     
     NSURL *profilePicURL = [NSURL URLWithString:tweetInfo.user.profilePic];
     cell.profilePicImageView.image = nil;
@@ -80,9 +93,11 @@
 }
 
 - (void)didTweet:(id)tweet {
-    [self.tweetsArray addObject:tweet]; //at beginning though
+    [self.tweetsArray insertObject:tweet atIndex:0];
     [self.tableView reloadData];
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {
