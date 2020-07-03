@@ -26,7 +26,7 @@
         self.tweet.favorited = YES;
         self.tweet.favoriteCount += 1;
         
-        //[self.likeButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
+        [self.likeButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
         
         [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
         if (error) {
@@ -39,7 +39,7 @@
         self.tweet.favorited = NO;
         self.tweet.favoriteCount -= 1;
         
-        //[self.likeButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
+        [self.likeButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
         
         [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
         if (error) {
