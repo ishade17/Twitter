@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4835911124ABE62F00592BB7 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4835911024ABE62F00592BB7 /* ComposeViewController.m */; };
+		4838901D24ADC93500EF6150 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4838901C24ADC93500EF6150 /* DetailsViewController.m */; };
 		4865829524ABA46100B446A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4865829324ABA46100B446A9 /* Main.storyboard */; };
 		48E43EAE24AAB711004C6FB3 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E43EAD24AAB711004C6FB3 /* User.m */; };
 		48E43EB124AAC12F004C6FB3 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E43EB024AAC12F004C6FB3 /* Tweet.m */; };
@@ -28,6 +29,8 @@
 		43D6142D6F34C1AE98EE4951 /* libPods-twitter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-twitter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4835910F24ABE62F00592BB7 /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		4835911024ABE62F00592BB7 /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		4838901B24ADC93500EF6150 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		4838901C24ADC93500EF6150 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		4865829424ABA46100B446A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48E43EAC24AAB711004C6FB3 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		48E43EAD24AAB711004C6FB3 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
 				4835910F24ABE62F00592BB7 /* ComposeViewController.h */,
 				4835911024ABE62F00592BB7 /* ComposeViewController.m */,
+				4838901B24ADC93500EF6150 /* DetailsViewController.h */,
+				4838901C24ADC93500EF6150 /* DetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				6AD278D120BC4B950085BC29 /* Sources */,
 				6AD278D220BC4B950085BC29 /* Frameworks */,
 				6AD278D320BC4B950085BC29 /* Resources */,
+				ABE95BA120B421954B97B3E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,6 +253,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		ABE95BA120B421954B97B3E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-twitter/Pods-twitter-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-twitter/Pods-twitter-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-twitter/Pods-twitter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -256,6 +279,7 @@
 			files = (
 				48E43EB424AAD83F004C6FB3 /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
+				4838901D24ADC93500EF6150 /* DetailsViewController.m in Sources */,
 				48E43EAE24AAB711004C6FB3 /* User.m in Sources */,
 				4835911124ABE62F00592BB7 /* ComposeViewController.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,

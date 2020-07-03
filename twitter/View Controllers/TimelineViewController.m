@@ -14,6 +14,7 @@
 #import "ComposeViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "DetailsViewController.h"
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -44,14 +45,10 @@
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
-            NSLog(@"😎😎😎 Successfully loaded home timeline");
-            /*for (Tweet *tweet in tweets) {
-                NSString *text = tweet.text;
-                NSLog(@"%@", text);
-            }*/
+            //NSLog(@"😎😎😎 Successfully loaded home timeline");
             self.tweetsArray = (NSMutableArray *)tweets;
         } else {
-            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+            //NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
@@ -83,13 +80,14 @@
     NSURL *profilePicURL = [NSURL URLWithString:tweetInfo.user.profilePic];
     cell.profilePicImageView.image = nil;
     [cell.profilePicImageView setImageWithURL:profilePicURL];
+    cell.profilePicImageView.layer.cornerRadius = 6;
     
     cell.profileNameLabel.text = tweetInfo.user.name;
     cell.profileHandleLabel.text = [@"@" stringByAppendingString:tweetInfo.user.screenName];
-    cell.tweetDateLabel.text = tweetInfo.createdAtString;
+    cell.tweetDateLabel.text = tweetInfo.timeAgoString;
     cell.tweetBodyLabel.text = tweetInfo.text;
     cell.retweetCountLabel.text = [NSString stringWithFormat:@"%d", tweetInfo.retweetCount];
-    cell.likedCountLabel.text =[NSString stringWithFormat:@"%d", tweetInfo.favoriteCount];
+    cell.likedCountLabel.text = [NSString stringWithFormat:@"%d", tweetInfo.favoriteCount];
     
     return cell;
 }
@@ -115,15 +113,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier  isEqual: @"tweetCompose"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeView = (ComposeViewController *)navigationController.topViewController;
+        composeView.delegate = self;
+        
+    } else if ([segue.identifier  isEqual: @"tweetDetails"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Tweet *passedTweet = self.tweetsArray[indexPath.row];
+        
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.tweet = passedTweet;
+    }
 }
-*/
+
 
 
 @end
